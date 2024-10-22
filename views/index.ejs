@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drive App</title>
+    <link rel="stylesheet" href="/public/pico.classless.min.css">
+    <link rel="stylesheet" href="/public/styles.css">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Drive - Upload your files</h1>
+        <!-- File upload -->
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <button type="submit">Upload</button>
+        </form>
+
+        <!-- Display -->
+        <h2>Uploaded Files</h2>
+        <ul>
+            <% files.forEach(function(file) { %>
+                <li><%= file.filename %> (<%= file.mimetype %>)</li>
+            <% }); %>
+        </ul>
+    </div>
+</body>
+</html>
