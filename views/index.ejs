@@ -10,13 +10,13 @@
   <body>
     <div class="container">
       <h1>Drive - Upload your files</h1>
-      <!-- File upload -->
+      <!-- file upload -->
       <form action="/upload" method="POST" enctype="multipart/form-data">
         <input type="file" name="file" required />
         <button type="submit">Upload</button>
       </form>
 
-      <!-- Display -->
+      <!-- display files -->
       <h2>Uploaded Files</h2>
       <ul>
         <% files.forEach(function(file) { %>

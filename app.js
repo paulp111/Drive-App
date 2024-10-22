@@ -35,7 +35,7 @@ app.post('/upload', upload.single('file'), async (req, res) => {
     return res.status(400).send('No file uploaded.');
   }
 
-  // Save file info in the database
+  // database save
   await prisma.file.create({
     data: {
       filename: file.originalname,
@@ -47,7 +47,7 @@ app.post('/upload', upload.single('file'), async (req, res) => {
   res.redirect('/');
 });
 
-// Start server
+// start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
