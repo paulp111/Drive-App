@@ -13,7 +13,7 @@ app.use(express.static(__dirname));
 
 // multer for file uploads
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
+  destination: function (req, file, cb) {
     cb(null, 'uploads/');
   },
   filename: (req, file, cb) => {
@@ -22,13 +22,13 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-// home route to render frontend
+// render frontend
 app.get('/', async (req, res) => {
   const files = await prisma.file.findMany();
   res.render('index', { files });
 });
 
-// File upload endpoint
+// file upload endpoint
 app.post('/upload', upload.single('file'), async (req, res) => {
   const { file } = req;
   if (!file) {
